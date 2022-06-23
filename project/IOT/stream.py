@@ -59,7 +59,7 @@ flag = 0
 def draw_keys(img, x, y, z):
     for k in VK:
         if ((VK[k]['x'] < x < VK[k]['x']+VK[k]['w']) and (VK[k]['y'] < y < VK[k]['y']+VK[k]['h'])):
-            cv2.rectangle(img, (VK[k]['x'], VK[k]['y']), (VK[k]['x']+VK[k]['w'], VK[k]['y']+VK[k]['h']), (0,0,255), -1) # thickness -1 means filled rectangle
+            cv2.rectangle(img, (VK[k]['x'], VK[k]['y']), (VK[k]['x']+VK[k]['w'], VK[k]['y']+VK[k]['h']), (0,0,255), 1) # thickness -1 means filled rectangle
             cv2.putText(img, f"{k}", (VK[k]['x']+30,VK[k]['y']+70), cv2.FONT_HERSHEY_SIMPLEX, 2, (abs(z),255,abs(z)), abs(z//20), cv2.LINE_AA)
         else:
             cv2.rectangle(img, (VK[k]['x'], VK[k]['y']), (VK[k]['x']+VK[k]['w'], VK[k]['y']+VK[k]['h']), (0,255,0), 1) # thickness -1 means filled rectangle
@@ -97,6 +97,11 @@ def draw_img(results,img,x,y,z):
                     color = (0,255,0)
                 
                 cv2.putText(img, f"{x}, {y}, {z}", (x+5,y-5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1, cv2.LINE_AA)
+                cv2.circle(img,(x,y),30,(0,0,255),1)
+                if(z<0):
+                    cv2.circle(img,(x,y),-int(z/6),(0,0,255),-1)
+                
+                
             except IndexError:
                 index_finger_tip = None
                 
