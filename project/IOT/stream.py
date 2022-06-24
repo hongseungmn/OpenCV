@@ -463,7 +463,7 @@ def draw_img5(results,img,x,y,z):
                 cv2.ellipse(img,(250,500),(200,0),theta,0,360,(0,0,255),6,2)
                 cv2.ellipse(img,(250,500),(150,150),theta,0,360,(180,180,180),-1)
                 cv2.ellipse(img,(250,500),(150,150),theta,0,360,(0,0,0),2)
-            
+                #cv2.putText(img,str(theta),(170,200),cv2.FONT_HERSHEY_SIMPLEX, 3, (153,255,204), 5, cv2.LINE_AA)
                 if((theta <0 )and (theta > -40)):
                     cv2.putText(img,"FAST >>",(170,200),cv2.FONT_HERSHEY_SIMPLEX, 3, (153,255,204), 5, cv2.LINE_AA)
                     cv2.ellipse(img,(250,500),(150,150),theta,0,360,(230,230,230),-1)
